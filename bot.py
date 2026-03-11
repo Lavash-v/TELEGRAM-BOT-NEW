@@ -218,8 +218,8 @@ def main():
     webhook_requests_handler.register(app, path=WEBHOOK_PATH)
     
     # Регистрируем функции запуска и остановки
-    app.on_startup.append(lambda _: asyncio.create_task(on_startup()))
-    app.on_shutdown.append(lambda _: asyncio.create_task(on_shutdown()))
+    app.on_startup.append(on_startup())
+    app.on_shutdown.append(on_shutdown())
     
     # Настраиваем приложение с диспетчером
     setup_application(app, dp, bot=bot)
@@ -233,3 +233,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
